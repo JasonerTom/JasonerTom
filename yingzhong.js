@@ -8,19 +8,9 @@
 群1077223830
 *******************************
 [rewrite_local]
-^http[s]?:\/\/app.cocoeye.org\/\/app\/ucenter\/user\/vip\/isvip\/.+$ url script-response-body app.js
+^http[s]?:\/\/app.cocoeye.org\/\/app\/ucenter\/user\/vip\/isvip\/.+$ url script-response-body https://raw.githubusercontent.com/JasonerTom/JasonerTom/main/yingzhong.js
 [mitm] 
 hostname = *.app.*
-*******************************
-Surge
-
-[Script]
-^http[s]?:\/\/app.cocoeye.org\/\/app\/ucenter\/user\/vip\/isvip\/.+$ requires-body=1,max-size=0,script-path=app.js
-
-[MITM]
-hostname = *.app.*
-
-*******************************/
 var obj = JSON.parse($response.body);
     obj.data.isVip= true;
     $done({body: JSON.stringify(obj)});
